@@ -34,22 +34,22 @@ public class App {
         studentManagementConsole.save(createdStudent1);
 
 
-        System.out.println("\n Find Student by id  " + studentManagementConsole.find(createdStudent.getId()));
+        System.out.println("\n >>Find Student by id  " + studentManagementConsole.find(createdStudent.getId()));
 
-        System.out.println("\n Find All");
+        System.out.println("\n >>Find All");
         studentManagementConsole.findAll().forEach(System.out::println);
 
-        System.out.println("\n Update Student");
+        System.out.println("\n >>Update Student");
 
         createdStudent1.setName("TestTest");
         studentManagementConsole.edit(createdStudent1);
-        System.out.println("updated Student " + studentManagementConsole.find(createdStudent1.getId()));
+        System.out.println(" >>updated Student " + studentManagementConsole.find(createdStudent1.getId()));
 
 
-        System.out.println("\n Remove Student by id");
+        System.out.println("\n >>Remove Student by id");
         studentManagementConsole.remove(createdStudent.getId());
 
-        System.out.println("\n checking removed Student");
+        System.out.println("\n >> checking removed Student");
         System.out.println(studentManagementConsole.find(createdStudent.getId()));
 
 

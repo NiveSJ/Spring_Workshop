@@ -24,6 +24,7 @@ public class StudentManagementConsoleImpl implements StudentManagement {
         System.out.println("Enter Student name");
 
         String name = userInputService.getString();
+        if (name.equals(null)) throw new IllegalArgumentException("Name cannot be null");
         Student student = new Student(name);
         return student;
     }

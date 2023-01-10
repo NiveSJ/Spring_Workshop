@@ -13,7 +13,7 @@ public class ScannerInputService implements UserInputService {
 
     @Override
     public String getString() {
-        String input = scanner.next();
+        String input = scanner.nextLine();
 
         return input;
     }
