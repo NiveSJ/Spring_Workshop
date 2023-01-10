@@ -1,6 +1,7 @@
 package se.lexicon;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import se.lexicon.config.ComponentScanConfig;
 import se.lexicon.data_access.StudentDAO;
 
 /**
@@ -11,10 +12,9 @@ public class App {
 
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(ComponentScanConfig.class);
+        StudentDAO studentDao = context.getBean(StudentDAO.class);
+        context.close();
 
-        StudentDAO studentDAO = context.getBean(StudentDAO.class);
 
-
-        System.out.println("Hello World!");
     }
 }

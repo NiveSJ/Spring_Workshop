@@ -1,4 +1,4 @@
-package se.lexicon;
+package se.lexicon.config;
 
 
 import org.springframework.context.annotation.ComponentScan;
