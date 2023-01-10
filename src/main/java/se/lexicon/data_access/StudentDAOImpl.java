@@ -14,10 +14,15 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public Student save(Student student) {
+
         if (student.equals(null)) throw new IllegalArgumentException("Student cannot be null");
         Student foundName = findByName(student.getName());
-        if (foundName != null) throw new IllegalArgumentException("Student Already present cannot insert");
 
+        if (foundName != null) throw new IllegalArgumentException("Student Already present cannot insert");
+        int createdId = StudentIdGenerator.nextId();
+
+
+        student.setId(createdId);
         studentStorage.add(student);
         return student;
     }
@@ -36,6 +41,7 @@ public class StudentDAOImpl implements StudentDAO {
 
     public Student findByName(String name) {
         if (name.equals(null)) throw new IllegalArgumentException("Id cannot be null");
+
         return studentStorage.stream()
                 .filter(student -> student.getName().equalsIgnoreCase(name))
                 .findFirst().orElse(null);

@@ -11,7 +11,7 @@ public interface StudentManagement {
 
     Student find(int id);
 
-    Student remove(int id);
+    void remove(int id);
 
     List<Student> findAll();
 
