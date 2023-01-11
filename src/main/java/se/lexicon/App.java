@@ -43,7 +43,7 @@ public class App {
 
         createdStudent1.setName("TestTest");
         studentManagementConsole.edit(createdStudent1);
-        System.out.println(" >>updated Student " + studentManagementConsole.find(createdStudent1.getId()));
+        System.out.println(" >>updated Student: " + studentManagementConsole.find(createdStudent1.getId()));
 
 
         System.out.println("\n >>Remove Student by id");

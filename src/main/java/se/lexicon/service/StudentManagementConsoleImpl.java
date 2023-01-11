@@ -32,9 +32,7 @@ public class StudentManagementConsoleImpl implements StudentManagement {
     @Override
     public Student save(Student student) {
 
-
         Student createdStudent = studentDAO.save(student);
-
         return createdStudent;
     }
 
@@ -60,7 +58,7 @@ public class StudentManagementConsoleImpl implements StudentManagement {
 
     @Override
     public Student edit(Student student) {
-        Student updatedStudent = studentDAO.update(student);
+        Student updatedStudent = studentDAO.save(student);
         return updatedStudent;
     }
 }
