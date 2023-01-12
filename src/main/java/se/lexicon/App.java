@@ -49,6 +49,7 @@ public class App {
         System.out.println("\n >>Remove Student by id");
         studentManagementConsole.remove(createdStudent.getId());
 
+
         System.out.println("\n >> checking removed Student");
         System.out.println(studentManagementConsole.find(createdStudent.getId()));
 

@@ -6,6 +6,11 @@ public class Student {
     int id;
     String name;
 
+    public Student(int id) {
+
+        this.id = id;
+    }
+
     public Student(String name) {
 
         this.name = name;

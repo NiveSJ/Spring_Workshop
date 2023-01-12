@@ -10,43 +10,37 @@ import java.util.List;
 @Component
 public class StudentDAOImpl implements StudentDAO {
 
-    List<Student> studentStorage = new ArrayList<>();
+    List<Student> studentStorage = new ArrayList<>(); // e1, e2
 
     @Override
     public Student save(Student student) {
-
-        if (student.equals(null)) throw new IllegalArgumentException("Student cannot be null");
-
-
-        Student foundName = findByName(student.getName());
+        if (student == null) throw new IllegalArgumentException("Student cannot be null");
         if (student.getId() == 0) {
-            if (foundName != null) throw new IllegalArgumentException("Student Already present cannot insert");
-            // For create
 
             int createdId = StudentIdGenerator.nextId();
             student.setId(createdId);
             studentStorage.add(student);
-            return student;
+
+        } else {
+            studentStorage
+                    .forEach(element ->
+                    { if (element.getId() == student.getId()) element.setName(student.getName()); });
+
+        /*    studentStorage.stream()
+                    .filter(student1 -> student1.getId()==student.getId())
+                    .forEach(student1 ->student1.setName(student.getName())); */
+
         }
-        // For Update
-        else if (foundName != null && student.getId() != 0) {
-
-            foundName.setId(student.getId());
-            foundName.setName(student.getName());
-
-            return student;
-
-
-        }
-        return null;
-
+        return student;
     }
 
     @Override
     public Student find(int id) {
         if (id == 0) throw new IllegalArgumentException("Id cannot be null");
 
-        return studentStorage.stream().filter(student -> student.getId() == id).findFirst().orElse(null);
+        return studentStorage.stream()
+                .filter(student -> student.getId() == id)
+                .findFirst().orElse(null);
     }
 
     @Override
@@ -69,10 +63,10 @@ public class StudentDAOImpl implements StudentDAO {
     public void delete(int id) {
         if (id == 0) throw new IllegalArgumentException("Id cannot be null");
 
-        Student foundstudent = find(id);
-        if (foundstudent.equals(null)) throw new IllegalArgumentException("No Such Student");
+        Student foundStudent = find(id);
+        if (foundStudent.equals(null)) throw new IllegalArgumentException("No Such Student");
 
-        studentStorage.remove(foundstudent);
+        studentStorage.remove(foundStudent);
 
     }
 
