@@ -49,7 +49,7 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     public Student findByName(String name) {
-        if (name.equals(null)) throw new IllegalArgumentException("Id cannot be null");
+        if (name == null) throw new IllegalArgumentException("Id cannot be null");
 
         return studentStorage.stream()
                 .filter(student -> student.getName().equalsIgnoreCase(name))
@@ -64,7 +64,7 @@ public class StudentDAOImpl implements StudentDAO {
         if (id == 0) throw new IllegalArgumentException("Id cannot be null");
 
         Student foundStudent = find(id);
-        if (foundStudent.equals(null)) throw new IllegalArgumentException("No Such Student");
+        if (foundStudent == null) throw new IllegalArgumentException("No Such Student");
 
         studentStorage.remove(foundStudent);
 

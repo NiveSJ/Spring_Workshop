@@ -13,7 +13,7 @@ import java.util.List;
 
 @Component
 public class StudentManagementConsoleImpl implements StudentManagement {
-  
+
     @Autowired
     UserInputService userInputService;
 
@@ -26,8 +26,7 @@ public class StudentManagementConsoleImpl implements StudentManagement {
 
         String name = userInputService.getString();
         if (name == null) throw new IllegalArgumentException("Name cannot be null");
-        Student student = new Student(name);
-        return student;
+        return new Student(name);
     }
 
     @Override
@@ -39,8 +38,7 @@ public class StudentManagementConsoleImpl implements StudentManagement {
     @Override
     public Student find(int id) {
 
-        Student foundStudent = testStudentDAO.find(id);
-        return foundStudent;
+        return testStudentDAO.find(id);
     }
 
     @Override
@@ -52,15 +50,13 @@ public class StudentManagementConsoleImpl implements StudentManagement {
 
     @Override
     public List<Student> findAll() {
-        List<Student> AllStudents = testStudentDAO.findAll();
-        return AllStudents;
+        return testStudentDAO.findAll();
     }
 
     @Override
     public Student edit(Student student) {
-        // (20 - Test)
-        // find by id
-        Student updatedStudent = testStudentDAO.save(student);
-        return updatedStudent;
+
+        if (find(student.getId()) == null) throw new IllegalArgumentException("No such student to update");
+        return testStudentDAO.save(student);
     }
 }
